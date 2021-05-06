@@ -41,7 +41,7 @@ def object_viewed_receiver(sender,instance,request,*args,**kwargs):
     #get the content type of that model
     #it is same like instance.__class__, which we did in mixins
     c_type = ContentType.objects.get_for_model(sender)
-    #user = None
+    user = None
     if request.user.is_authenticated:
         user = request.user
 
