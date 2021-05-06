@@ -40,10 +40,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    #third party
+    'storages',
+
     #myapps
     'accounts',
     'addresses',
-    'orders',
+    'orders' ,
     'products',
     'search',
     'tags',
@@ -144,6 +148,9 @@ STATICFILES_DIRS = [
 #MEDIA
 MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
+
+#import for static files
+from ecommerce.aws.conf import *
 
 #setting up after login and logout
 LOGOUT_REDIRECT_URL = '/login/'
