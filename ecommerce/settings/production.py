@@ -30,6 +30,18 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'bistbiky@gmail.com'
+EMAIL_HOST_PASSWORD = 'b1147849849'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'Python Ecommerce <hungrypy@gmail.com>'
+
+MANAGERS =(
+        ("bistbiky@gmail.com",'Biky Bist'),
+    )
+
+ADMINS = MANAGERS
 
 # Application definition
 
