@@ -1,0 +1,23 @@
+<!-- This form can be used by any page and can be modified according to their use by passing the varibale and using include in their page -->
+
+  <form method="POST" class="form-product-ajax" action="{% url 'carts:cart_update' %}" data-endpoint="{% url 'carts:cart_update' %}">
+    {% csrf_token %}
+    <input type="hidden" name="product_id" value="{{product.id}}">
+
+  <!-- in cart is true, then this goes to cart home page -->
+    {% if in_cart %}
+      <button type="submit" class="btn btn-link btn-sm">Remove</button>
+    <!-- if in cart is false, this goes to product detail -->
+    {% else %}
+
+    <span class="submit-span" >
+      {% if product in cart.products.all %}
+        In Cart<button type="submit" class="btn btn-link">Remove</button>
+      {% else %}
+        <button type="submit" class="btn btn-link">Add to cart</button>
+      {% endif %}
+    </span>
+
+    {% endif %}
+
+  </form>

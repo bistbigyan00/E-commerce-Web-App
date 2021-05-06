@@ -1,0 +1,48 @@
+{% url 'home' as home_url %}
+{% url 'products:product' as product_url %}
+{% url 'contact' as contact_url %}
+{% url 'carts:cart' as carts_url %}
+{% url 'cart:home' as cart_url %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+
+    <a class="navbar-brand" href="#">E commerce</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item {% if request.path == home_url %} active {% endif %}">
+          <a class="nav-link" href="{% url 'home' %}">Home</a>
+        </li>
+        <li class="nav-item {% if request.path == product_url %} active {% endif %}" >
+          <a class="nav-link" href="{% url 'products:product' %}">Products</a>
+        </li>
+        <li class="nav-item {% if request.path == contact_url %} active {% endif %}" >
+          <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+        </li>
+    
+        {% if request.user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'accounts:logout' %}">Log Out</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'accounts:login' %}">Log In</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'accounts:register' %}">Register</a>
+        </li>
+        {% endif %}
+        <li class="nav-item {% if request.path == carts_url %} active {% endif %}">
+          <!-- session works in every page so -->
+          <a class="nav-link" href="{% url 'carts:cart' %}"> <span class="cart-product-count"> {{ request.session.cart_items }} </span>Carts</a>
+        </li>
+
+      </ul>
+      {% include 'search/snippets/search-form.html' %}
+    </div>
+  </div>
+</nav>

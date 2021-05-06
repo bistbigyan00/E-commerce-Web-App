@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Cart</h1>
+
+{% if cart.products.exists %}
+  <table class="table cart-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Product Name</th>
+        <th>Product Price</th>
+      </tr>
+    </thead>
+    <tbody class="cart-body">
+      {% for product in cart.products.all %}
+      <tr class="cart-product">
+        <td>{{ forloop.counter }}</td>
+        <td><a href="{% url 'products:singleProduct' slug=product.slug %}">{{ product.title }}</a>
+        <!-- using form to delete the product using post method -->
+        {% include 'carts/snippets/product-remove-cart.html' with product_id=product.id %}
+        </td>
+        <td>{{ product.price }}</td>
+
+      </tr>
+      {% endfor %}
+      <tr>
+        <th colspan="2"></th>
+        <td><b>Subtotal</b><span class="cart-subtotal">{{ cart.subtotal }}</span></td>
+      </tr>
+      <tr>
+        <th colspan="2"></th>
+        <td><b>Total</b><span class="cart-total">{{ cart.total }}</span></td>
+      </tr>
+      <tr>
+        <th colspan="2"></th>
+        <td><a href="{% url 'carts:checkout' %}"><button class="btn btn-lg btn-success">Checkout</button></a><td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- this form is for jquery to display the button after remove is clicked, it is hidden initially and after rmeove is clicked that remove disappears and it shows up -->
+  <div class="cart-item-remove-form" style="display:none">
+    {% include 'carts/snippets/product-remove-cart.html' with product_id=product.id %}
+  </div>
+
+{% else %}
+  <p class="lead">Carts empty</p>
+{% endif %}
+
+{% endblock %}

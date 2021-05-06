@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content%}
+<h3>Welcome to the contact Page</h3>
+  <div class="container">
+
+    <form class="contact-form" action="{% url 'contact' %}" method="post">
+      {{form.as_p}}
+      {% csrf_token%}
+      <input type="submit" class="btn btn-primary" value="Submit">
+    </form>
+
+  </div>
+{% endblock %}
