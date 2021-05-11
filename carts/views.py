@@ -85,7 +85,7 @@ def checkout(request):
     if cart_created or cart_obj.products.count() == 0:
         return redirect('carts:cart')
 
-    login_form = LoginForm()
+    login_form = LoginForm(request=request)
     guest_form = GuestForm()
     address_form = AddressForm()
 

@@ -165,6 +165,9 @@ MEDIA_URL = '/media/'
 from ecommerce.aws.conf import *
 
 #setting up after login and logout
+#setting up after login and logout
+LOGIN_URL = '/login/'
+LOGIN_URL_REDIRECT = '/'
 LOGOUT_REDIRECT_URL = '/login/'
 
 #Let's Encrypt ssl/tls https

@@ -157,7 +157,8 @@ MEDIA_ROOT = MEDIA_DIR
 MEDIA_URL = '/media/'
 
 #setting up after login and logout
-
+LOGIN_URL = '/login/'
+LOGIN_URL_REDIRECT = '/'
 LOGOUT_REDIRECT_URL = '/login/'
 
 #Let's Encrypt ssl/tls https

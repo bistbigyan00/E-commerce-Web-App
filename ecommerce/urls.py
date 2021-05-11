@@ -22,6 +22,7 @@ urlpatterns = [
     path('',views.home,name='home'),
     path('contact/',views.contact,name='contact'),
     path('',include('accounts.urls',namespace='accounts')),
+    path('accounts/',include('accounts.passwords.urls')),
     path('',include('products.urls', namespace='products')),
     path('',include('search.urls',namespace='search')),
     path('',include('carts.urls',namespace='carts')),
